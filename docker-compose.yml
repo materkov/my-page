@@ -1,7 +1,8 @@
 version: '3'
 services:
   frontend:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/my-page:7
+    build: ./frontend
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/my-page:9
     container_name: frontend
     hostname: frontend
     restart: always
@@ -10,3 +11,28 @@ services:
     ports:
       - 80:80
       - 443:443
+
+  consul-server:
+    image: consul:1.0.6
+    container_name: consul-server
+    hostname: consul-server
+    volumes:
+      - /apps/consul/server:/consul/data
+    command:
+      - agent
+      - -server
+      - -ui
+      - -bootstrap-expect=1
+      - -client=0.0.0.0
+
+  lego:
+    build: ./lego
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/lego:3
+    volumes:
+      - /apps/lego:/lego
+    entrypoint: 
+      - tail 
+      - -f 
+      - /dev/null
+    container_name: lego
+    hostname: lego
