@@ -8,6 +8,7 @@ services:
     restart: always
     volumes:
       - /apps/lego/certificates:/certs
+      - /apps/frontend:/frontend
     ports:
       - 80:80
       - 443:443
@@ -27,7 +28,7 @@ services:
 
   lego:
     build: ./lego
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/lego:3
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/lego:7
     volumes:
       - /apps/lego:/lego
     entrypoint: 
