@@ -11,6 +11,4 @@ RUN apk update && apk add --no-cache --virtual run-dependencies ca-certificates 
     apk del build-dependencies && \
     rm -rf ${GOPATH}
 
-COPY gen.sh /usr/local/bin/generate
-
-ENTRYPOINT [ "/usr/bin/lego" ]
+ENTRYPOINT ["/usr/bin/lego"]

@@ -26,18 +26,6 @@ services:
       - -bootstrap-expect=1
       - -client=0.0.0.0
 
-  lego:
-    build: ./lego
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/lego:7
-    volumes:
-      - /apps/lego:/lego
-    entrypoint: 
-      - tail 
-      - -f 
-      - /dev/null
-    container_name: lego
-    hostname: lego
-
   twitch2telegram:
     image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/twitch2telegram:1
     container_name: twitch2telegram
