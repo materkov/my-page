@@ -6,5 +6,5 @@ export AWS_SECRET_ACCESS_KEY="$(curl http://consul-server:8500/v1/kv/lego/aws_cr
 export AWS_HOSTED_ZONE_ID="$(curl http://consul-server:8500/v1/kv/lego/aws_credentials/zone_id?raw)"
 
 lego --path /lego --accept-tos --email="materkov@gmail.com" --dns="route53" \
-  --domains="mmaks.me" --domains="consul.mmaks.me" \
+  --domains="mmaks.me" --domains="consul.mmaks.me" --domains="twitch2telegram.mmaks.me" \
   run
