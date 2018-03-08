@@ -27,8 +27,23 @@ services:
       - -client=0.0.0.0
 
   twitch2telegram:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/twitch2telegram:1
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/twitch2telegram:9c7f4c0
     container_name: twitch2telegram
     hostname: twitch2telegram
     env_file:
-      - .env
+      - env/twitch2telegram.env
+
+  rabbitmq:
+    image: rabbitmq:3.7.3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  sender-telegram:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/sender-telegram:1
+    container_name: sender-telegram
+    hostname: sender-telegram
+    env_file:
+      - env/sender-telegram.env
