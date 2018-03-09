@@ -25,3 +25,11 @@ resource "aws_route53_record" "twitch2telegram" {
     ttl     = "60"
     records = ["138.68.98.74"]
 }
+
+resource "aws_route53_record" "notifier-webhook" {
+    zone_id = "Z18G34VZKFPZ0O"
+    name    = "notifier-webhook.mmaks.me."
+    type    = "A"
+    ttl     = "60"
+    records = ["138.68.98.74"]
+}
