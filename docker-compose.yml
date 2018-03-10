@@ -54,3 +54,17 @@ services:
     hostname: source-youtube
     env_file:
       - env/source-youtube.env
+
+  feed:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/feed:1
+    container_name: feed
+    hostname: feed
+    env_file:
+      - env/feed.env
+    volumes:
+      - /apps/feed:/store
+
+  feed-web:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/feed-web:1
+    container_name: feed-web
+    hostname: feed-web

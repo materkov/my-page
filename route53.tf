@@ -33,3 +33,19 @@ resource "aws_route53_record" "notifier-webhook" {
     ttl     = "60"
     records = ["138.68.98.74"]
 }
+
+resource "aws_route53_record" "feed" {
+    zone_id = "Z18G34VZKFPZ0O"
+    name    = "feed.mmaks.me."
+    type    = "A"
+    ttl     = "60"
+    records = ["138.68.98.74"]
+}
+
+resource "aws_route53_record" "feed-web" {
+    zone_id = "Z18G34VZKFPZ0O"
+    name    = "feed-web.mmaks.me."
+    type    = "A"
+    ttl     = "60"
+    records = ["138.68.98.74"]
+}

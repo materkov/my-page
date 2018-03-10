@@ -1,3 +1,4 @@
 backup.snap
 .terraform
+terraform.tfstate.backup
 env/
