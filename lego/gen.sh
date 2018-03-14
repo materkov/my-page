@@ -5,4 +5,5 @@ docker run -v /apps/lego:/apps/lego --env-file=../env/lego.env --rm \
   --path /apps/lego --accept-tos --email="materkov@gmail.com" --dns="route53" \
   --domains="mmaks.me" --domains="consul.mmaks.me" --domains="twitch2telegram.mmaks.me" \
   --domains="notifier-webhook.mmaks.me" --domains="feed.mmaks.me" --domains="feed-web.mmaks.me" \
+  --domains="feed-realtime.mmaks.me" \
   run
