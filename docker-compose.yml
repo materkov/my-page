@@ -13,50 +13,34 @@ services:
       - 80:80
       - 443:443
 
-  consul-server:
-    image: consul:1.0.6
-    container_name: consul-server
-    hostname: consul-server
-    volumes:
-      - /apps/consul/server:/consul/data
-    command:
-      - agent
-      - -server
-      - -ui
-      - -bootstrap-expect=1
-      - -client=0.0.0.0
+  snsonfirm:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/snsconfirm:latest
+    container_name: snsconfirm
+    hostname: snsconfirm
 
-  twitch2telegram:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/twitch2telegram:9c7f4c0
-    container_name: twitch2telegram
-    hostname: twitch2telegram
+  srctwitch:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/srctwitch:59064fa816d7dc42af6d47b33fbdd2246f1b6889
+    container_name: srctwitch
+    hostname: srctwitch
     env_file:
-      - env/twitch2telegram.env
+      - env/srctwitch.env
 
-  rabbitmq:
-    image: rabbitmq:3.7.3-management
-    container_name: rabbitmq
-    hostname: rabbitmq
-    ports:
-      - 15672:15672
-      - 5672:5672
-
-  sender-telegram:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/sender-telegram:1
-    container_name: sender-telegram
-    hostname: sender-telegram
+  srcyoutube:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/srcyoutube:97fe981c172f6ac3c5cb8a9ad6b2834781055f42
+    container_name: srcyoutube
+    hostname: srcyoutube
     env_file:
-      - env/sender-telegram.env
+      - env/srcyoutube.env
 
-  source-youtube:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/source-youtube:1
-    container_name: source-youtube
-    hostname: source-youtube
+  sendertelegram:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/sendertelegram:e32db965339f35fc4b1b8ff41aa7b300f306412e
+    container_name: sendertelegram
+    hostname: sendertelegram
     env_file:
-      - env/source-youtube.env
+      - env/sendertelegram.env
 
   feed:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/feed:1
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/feed:58f7c47b67f32321d51dccb27be188e4722425ba
     container_name: feed
     hostname: feed
     env_file:
@@ -65,6 +49,22 @@ services:
       - /apps/feed:/store
 
   feed-web:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/feed-web:1
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/feed-web:29a82569898948134b28ac6796203508a835c465
     container_name: feed-web
     hostname: feed-web
+
+  diffcalculator:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/diffcalculator:636ef0b4f79912c0c90de78a01a1dbf58c88d3ff
+    container_name: diffcalculator
+    hostname: diffcalculator
+    env_file:
+      - env/diffcalculator.env
+    volumes:
+      - /apps/diff-calculator:/store
+
+  sourcerss:
+    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/sourcerss:89c015310c744ecccbb30105ec011b3b16fe66e7
+    container_name: sourcerss
+    hostname: sourcerss
+    env_file:
+      - env/sourcerss.env
