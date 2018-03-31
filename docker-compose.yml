@@ -13,10 +13,8 @@ services:
       - 80:80
       - 443:443
 
-  snsonfirm:
+  snsconfirm:
     image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/snsconfirm:latest
-    container_name: snsconfirm
-    hostname: snsconfirm
 
   srctwitch:
     image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/srctwitch:59064fa816d7dc42af6d47b33fbdd2246f1b6889
@@ -54,7 +52,7 @@ services:
     hostname: feed-web
 
   diffcalculator:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/diffcalculator:ae8a67968856348dd33dee1c53c2c0e3f3ce2d94
+    image: materkov/diffcalculator:6fe708c1ec53d90f4cb3fefd82571084d0064d7e
     container_name: diffcalculator
     hostname: diffcalculator
     env_file:
@@ -63,7 +61,7 @@ services:
       - /apps/diff-calculator:/store
 
   sourcerss:
-    image: 563473344515.dkr.ecr.eu-central-1.amazonaws.com/sourcerss:63d69cdf9114f17f87a1cc035cc2d1c56b762f76
+    image: materkov/sourcerss:f4c4ac69597e755179c9fa74675a0ad77ca78f53
     container_name: sourcerss
     hostname: sourcerss
     env_file:
