@@ -61,7 +61,7 @@ services:
       - /apps/diff-calculator:/store
 
   sourcerss:
-    image: materkov/sourcerss:f4c4ac69597e755179c9fa74675a0ad77ca78f53
+    image: materkov/sourcerss:a8b3e009869fb1840d37eff8d629d6ae65846e42
     container_name: sourcerss
     hostname: sourcerss
     env_file:
